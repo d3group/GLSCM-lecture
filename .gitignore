@@ -1,0 +1,15 @@
+# Build output
+_site/
+site/
+
+# marimo session cache
+__marimo__/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# OS / tools
+.DS_Store
+.playwright-mcp/

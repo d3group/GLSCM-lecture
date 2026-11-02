@@ -1,0 +1,91 @@
+/* Load Inter from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+  --marimo-heading-font: 'Inter', sans-serif;
+}
+
+/* Increase paragraph font size and change color */
+.paragraph {
+  font-size: 1.5rem;
+  color: light-dark(dark, pink);
+}
+
+/* Responsive Slide Containers */
+.slide-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+  min-height: 90vh;
+  /* Ensure it takes up most of the screen height */
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.slide-content-wrapper {
+  width: 100%;
+  max-width: 1600px;
+  /* Keep a max width for readability on very large screens */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide-footer {
+  width: 100%;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+/* Layout specific classes */
+.layout-2-column {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.layout-column {
+  flex: 1;
+  min-width: 0;
+  /* Prevent flex items from overflowing */
+}
+
+/* Center all Altair charts */
+.altair-chart-container,
+[class*="altair"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Center the chart SVG itself */
+.vega-embed,
+.vega-embed svg {
+  margin: 0 auto;
+  display: block;
+}
+
+
+@media print {
+  .slide-container {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+}
+
+.fixed.top-\[25vh\].right-8.z-\[10000\] {
+  display: none !important;
+}

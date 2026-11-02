@@ -1,0 +1,63 @@
+name: Deploy marimo notebooks to GitHub Pages
+
+on:
+  push:
+    branches: ["*"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        # Same marimo version the notebooks were developed and tested with
+        run: pip install marimo==0.18.1 nbformat
+
+      - name: Export center of gravity app as HTML
+        run: MARIMO_OUTPUT_MAX_BYTES=30000000 marimo export html-wasm apps/center_of_gravity.py -o site/center_of_gravity --mode edit
+
+      - name: Export center of gravity app as Jupyter Notebook
+        run: marimo export ipynb apps/center_of_gravity.py -o site/downloads/center_of_gravity.ipynb
+
+      - name: Export warehouse location part 1 app as HTML
+        run: MARIMO_OUTPUT_MAX_BYTES=30000000 marimo export html-wasm apps/warehouse_location_part_1.py -o site/warehouse_location_part_1 --mode edit
+
+      - name: Export warehouse location part 1 app as Jupyter Notebook
+        run: marimo export ipynb apps/warehouse_location_part_1.py -o site/downloads/warehouse_location_part_1.ipynb
+
+      - name: Export warehouse location part 2 app as HTML
+        run: MARIMO_OUTPUT_MAX_BYTES=30000000 marimo export html-wasm apps/warehouse_location_part_2.py -o site/warehouse_location_part_2 --mode edit
+
+      - name: Export warehouse location part 2 app as Jupyter Notebook
+        run: marimo export ipynb apps/warehouse_location_part_2.py -o site/downloads/warehouse_location_part_2.ipynb
+
+      - name: Upload Pages Artifact
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
