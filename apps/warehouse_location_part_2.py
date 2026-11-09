@@ -4,6 +4,7 @@ __generated_with = "0.18.1"
 app = marimo.App(
     width="medium",
     app_title="Warehouse Location Problem",
+    layout_file="layouts/warehouse_location_part_2.slides.json",
     css_file="d3.css",
 )
 
@@ -93,7 +94,7 @@ def _():
     import folium
     import warnings
     warnings.filterwarnings("ignore", message=".*narwhals.*is_pandas_dataframe.*")
-    return folium, mo, np, pl, pulp
+    return alt, folium, mo, np, pl, pulp
 
 
 @app.cell(hide_code=True)
@@ -607,7 +608,8 @@ def _(mo, sc):
 
 
 @app.cell(hide_code=True)
-def _(DataURLs, markup_slider, pl, rent_slider, tour_cost_slider):
+def _(DataURLs, pl):
+    # Base case from Part 1: 7,000 m², 6 €/m², 75 % markup, 400 € per tour
     pharmacies_aggregated = pl.read_csv(
         f'{DataURLs.BASE}/pharmacies_aggregated.csv',
         schema_overrides={"region_id": pl.Utf8}
@@ -618,15 +620,10 @@ def _(DataURLs, markup_slider, pl, rent_slider, tour_cost_slider):
         schema_overrides={"region_id": pl.Utf8}
     )
 
-    fixed_costs = fixed_costs.with_columns(base_fixed_cost=7000*rent_slider.value*12*(1+markup_slider.value))
-    fixed_costs = fixed_costs.with_columns(fixed_cost=pl.col('base_fixed_cost') * pl.col('cost_index'))
-
     transportation_costs = pl.read_csv(
         f'{DataURLs.BASE}/transportation_costs.csv',
         schema_overrides={"i": pl.Utf8, "j": pl.Utf8}
     )
-
-    transportation_costs = transportation_costs.with_columns(pl.col('c_ij')/400 * tour_cost_slider.value)
 
     I = pharmacies_aggregated["region_id"].unique().to_list()
     J = I
@@ -638,7 +635,7 @@ def _(DataURLs, markup_slider, pl, rent_slider, tour_cost_slider):
         (row["i"], row["j"]): row["c_ij"]
         for row in transportation_costs.iter_rows(named=True)
     }
-    return I, J, c, f, pharmacies_aggregated
+    return I, J, c, f, fixed_costs, pharmacies_aggregated
 
 
 @app.cell(hide_code=True)
@@ -1157,90 +1154,591 @@ def _(
     ])
 
     networkSlide.render()
-    return assignments_map_component, summary_table
+    return
+
+
+@app.cell(hide_code=True)
+def _(fixed_costs, np, pharmacies_aggregated, pl):
+    # Scenario engine for the slides below: rebuilds f_j and c_ij from the
+    # assumptions of Part 1 and solves the WLP directly with SciPy's HiGHS
+    # (faster than going through PuLP, so the sliders react quickly).
+
+    BASE_PARAMS = {
+        "size": 7000,       # warehouse size (m²)
+        "rent": 6.0,        # rent (€/m² per month)
+        "markup": 75,       # markup for staff, energy, overhead (%)
+        "tour": 400,        # cost per tour (€)
+        "speed": 70,        # average speed (km/h)
+        "day": 8.0,         # working day (h)
+        "min_stop": 9,      # minutes per pharmacy (9 reproduces the stops line of Part 1)
+        "deliveries": 1,    # deliveries per pharmacy and day
+        "share": 100,       # market share (%)
+        "max_drive": 4.0,   # maximum one-way driving time (h)
+    }
+
+    def make_scenario_engine(regions_df, fixed_costs_df):
+        from scipy.optimize import milp, LinearConstraint, Bounds
+        from scipy.sparse import coo_matrix
+
+        regions = regions_df.join(
+            fixed_costs_df.select(["region_id", "cost_index"]), on="region_id", how="left"
+        ).sort("region_id")
+        ids = regions["region_id"].to_list()
+        n = len(ids)
+        lat, lon = regions["lat"].to_numpy(), regions["lon"].to_numpy()
+        la, lo = np.radians(lat), np.radians(lon)
+        hav = (
+            np.sin((la[:, None] - la[None, :]) / 2) ** 2
+            + np.cos(la[:, None]) * np.cos(la[None, :]) * np.sin((lo[:, None] - lo[None, :]) / 2) ** 2
+        )
+        dist_km = 2 * 6371 * np.arcsin(np.sqrt(hav))  # haversine distance, as in Part 1
+        pharmacies = regions["pharmacies"].to_numpy()
+        cost_index = regions["cost_index"].to_numpy()
+
+        def inputs(p):
+            f = p["size"] * p["rent"] * 12 * (1 + p["markup"] / 100) * cost_index
+            drive = dist_km / p["speed"]                  # one-way driving time (h)
+            time_in_region = p["day"] - 2 * drive
+            stops = np.maximum(1, (time_in_region - 0.5) * 60 / p["min_stop"])
+            demand = pharmacies * 250 * p["deliveries"] * p["share"] / 100
+            c = np.ceil(demand[:, None] / stops) * p["tour"]
+            feasible = (drive <= p["max_drive"]) & (time_in_region >= 0)
+            return f, c, feasible
+
+        def solve(f, c, feasible, k=None):
+            ii, jj = np.nonzero(feasible)
+            m = len(ii)
+            nv = n + m
+            xi = n + np.arange(m)
+            cons = [
+                # each region is assigned to exactly one warehouse
+                LinearConstraint(coo_matrix((np.ones(m), (ii, xi)), shape=(n, nv)), 1, 1),
+                # x_ij <= y_j
+                LinearConstraint(
+                    coo_matrix(
+                        (np.r_[np.ones(m), -np.ones(m)], (np.r_[np.arange(m), np.arange(m)], np.r_[xi, jj])),
+                        shape=(m, nv),
+                    ),
+                    -np.inf, 0,
+                ),
+            ]
+            if k is not None:  # exactly k warehouses
+                cons.append(LinearConstraint(
+                    coo_matrix((np.ones(n), (np.zeros(n, dtype=int), np.arange(n))), shape=(1, nv)), k, k
+                ))
+            res = milp(np.r_[f, c[ii, jj]], constraints=cons, integrality=np.ones(nv), bounds=Bounds(0, 1))
+            if not res.success:
+                return None
+            y = res.x[:n] > 0.5
+            x = res.x[n:] > 0.5
+            assigned = np.empty(n, dtype=int)
+            assigned[ii[x]] = jj[x]
+            fixed = float(f[y].sum())
+            transport = float(c[ii[x], jj[x]].sum())
+            return {"k": int(y.sum()), "fixed": fixed, "transport": transport,
+                    "total": fixed + transport, "assigned": assigned}
+
+        def min_warehouses(feasible):
+            # smallest number of warehouses that can reach every region
+            ii, jj = np.nonzero(feasible)
+            cover = coo_matrix((np.ones(len(ii)), (ii, jj)), shape=(n, n))
+            res = milp(np.ones(n), constraints=[LinearConstraint(cover, 1, np.inf)],
+                       integrality=np.ones(n), bounds=Bounds(0, 1))
+            return int(round(res.fun))
+
+        def run(p):
+            f, c, feasible = inputs(p)
+            best = solve(f, c, feasible)
+            k_min = min_warehouses(feasible)
+            curve = []
+            for k in range(k_min, min(n, max(25, best["k"] + 8)) + 1):
+                s = best if k == best["k"] else solve(f, c, feasible, k)
+                if s is not None:
+                    curve.append({"k": k, "Fixed costs": s["fixed"] / 1e6,
+                                  "Transport costs": s["transport"] / 1e6,
+                                  "Total costs": s["total"] / 1e6})
+            a = best["assigned"]
+            best["k_min"] = k_min
+            best["curve"] = curve
+            best["assignments"] = pl.DataFrame({
+                "region_id": ids,
+                "lat": lat,
+                "lon": lon,
+                "demand": regions["demand"],
+                "assigned_warehouse": [ids[j] for j in a],
+                "warehouse_lat": lat[a],
+                "warehouse_lon": lon[a],
+            })
+            return best
+
+        return run
+
+    run_scenario = make_scenario_engine(pharmacies_aggregated, fixed_costs)
+    return BASE_PARAMS, run_scenario
+
+
+@app.cell(hide_code=True)
+def _(BASE_PARAMS, run_scenario):
+    base_result = run_scenario(BASE_PARAMS)
+    return (base_result,)
+
+
+@app.cell(hide_code=True)
+def _(alt):
+    COST_COLORS = {
+        "Fixed costs": "#2a78d6",
+        "Transport costs": "#eb6834",
+        "Total costs": "#3a3a38",
+    }
+
+    def cost_curve_chart(base, scenario=None, width=460, height=200):
+        """Fixed, transport and total costs over the number of warehouses.
+        With a scenario, the base case is drawn dashed and faded."""
+        cases = [("Base case", base)]
+        if scenario is not None:
+            cases.append(("Scenario", scenario))
+        lines, optima = [], []
+        for case, res in cases:
+            for r in res["curve"]:
+                for cost_type in COST_COLORS:
+                    lines.append({"Warehouses": r["k"], "Cost type": cost_type,
+                                  "Million €": round(r[cost_type], 2), "Case": case})
+            optima.append({"Warehouses": res["k"], "Million €": round(res["total"] / 1e6, 2),
+                           "Case": case, "label": f"optimum: {res['k']}"})
+        y_max = 1.6 * max(res["total"] for _, res in cases) / 1e6
+        x_max = max(r["k"] for _, res in cases for r in res["curve"])
+        k_min = cases[-1][1]["k_min"]
+
+        case_scale = ["Base case", "Scenario"]
+        with_scenario = scenario is not None
+        x = alt.X("Warehouses:Q", title="Number of warehouses",
+                  scale=alt.Scale(domain=[0.5, x_max + 0.5], nice=False),
+                  axis=alt.Axis(tickMinStep=1, format="d", grid=False))
+        y = alt.Y("Million €:Q", title="Annual cost (million €)",
+                  scale=alt.Scale(domain=[0, y_max], nice=False),
+                  axis=alt.Axis(gridColor="#eeeeee"))
+        opacity = alt.Opacity("Case:N", legend=None,
+                              scale=alt.Scale(domain=case_scale, range=[0.45 if with_scenario else 1, 1]))
+
+        line_data = alt.Chart(alt.Data(values=lines))
+        line_layer = line_data.mark_line(strokeWidth=2, clip=True).encode(
+            x=x, y=y, opacity=opacity,
+            color=alt.Color("Cost type:N", legend=alt.Legend(orient="top", title=None),
+                            scale=alt.Scale(domain=list(COST_COLORS), range=list(COST_COLORS.values()))),
+            strokeDash=alt.StrokeDash(
+                "Case:N",
+                legend=alt.Legend(orient="top", title=None) if with_scenario else None,
+                scale=alt.Scale(domain=case_scale, range=[[6, 4] if with_scenario else [1, 0], [1, 0]]),
+            ),
+        )
+        hover_layer = line_data.mark_circle(size=150, opacity=0, clip=True).encode(
+            x=x, y=y,
+            tooltip=[alt.Tooltip("Case:N"), alt.Tooltip("Warehouses:Q"), alt.Tooltip("Cost type:N"),
+                     alt.Tooltip("Million €:Q", format=".1f")],
+        )
+        opt_data = alt.Chart(alt.Data(values=optima))
+        opt_points = opt_data.mark_point(filled=True, size=110, color="#3a3a38", stroke="white",
+                                         strokeWidth=1.5).encode(x=x, y=y, opacity=opacity)
+        opt_label = opt_data.transform_filter(alt.datum.Case == cases[-1][0]).mark_text(
+            dy=-14, fontSize=12, fontWeight="bold", color="#3a3a38"
+        ).encode(x=x, y=y, text="label:N")
+
+        layers = [line_layer, hover_layer, opt_points, opt_label]
+        if k_min > 1:  # shade numbers of warehouses that cannot reach every region
+            band = alt.Data(values=[{"x0": 0.5, "x1": k_min - 0.5, "xm": k_min / 2}])
+            layers = [
+                alt.Chart(band).mark_rect(color="#9ca3af", opacity=0.18).encode(x="x0:Q", x2="x1:Q"),
+                alt.Chart(band).mark_text(angle=270, fontSize=11, color="#6b7280", text="infeasible").encode(
+                    x="xm:Q", y=alt.value(height / 2)
+                ),
+            ] + layers
+        return (
+            alt.layer(*layers)
+            .properties(width=width, height=height)
+            .configure_view(stroke=None)
+            .configure_axis(labelFontSize=12, titleFontSize=13, labelColor="#52514e", titleColor="#52514e")
+            .configure_legend(labelFontSize=13, symbolStrokeWidth=2)
+        )
+    return (cost_curve_chart,)
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    rent_slider = mo.ui.slider(
-        start=2,
-        stop=12,
-        value=6,
-        show_value=True,
-    )
+    reset_button = mo.ui.button(label="↺ Reset", value=0, on_click=lambda v: v + 1)
+    return (reset_button,)
 
-    # markup factor for staff, energy, overhead
-    markup_slider = mo.ui.slider(
-        start=0.5,
-        stop=1,
-        step=0.05,
-        value=0.75,
-        show_value=True,
-    )
 
-    # cost per delivery tour (truck + driver for one day)
-    tour_cost_slider = mo.ui.slider(
-        start=200,
-        stop=800,
-        step=20,
-        value=400,
-        show_value=True,
-    )
-    return markup_slider, rent_slider, tour_cost_slider
+@app.cell(hide_code=True)
+def _(BASE_PARAMS, mo, reset_button):
+    reset_button.value  # clicking "reset" re-creates the sliders with their base values
+
+    _settings = {  # key: (label, start, stop, step)
+        "size": ("Warehouse size (m²)", 3000, 15000, 500),
+        "rent": ("Rent (€/m² per month)", 2, 15, 0.5),
+        "markup": ("Markup staff, energy, overhead (%)", 0, 200, 5),
+        "tour": ("Cost per tour (€)", 200, 800, 10),
+        "speed": ("Average speed (km/h)", 40, 100, 5),
+        "day": ("Working day (h)", 6, 12, 0.5),
+        "min_stop": ("Minutes per pharmacy", 5, 15, 1),
+        "deliveries": ("Deliveries per pharmacy and day", 1, 3, 1),
+        "share": ("Market share (%)", 10, 100, 10),
+        "max_drive": ("Max. one-way driving time (h)", 1.5, 5, 0.5),
+    }
+    scenario_sliders = mo.ui.dictionary({
+        _key: mo.ui.slider(start=_start, stop=_stop, step=_step, value=BASE_PARAMS[_key],
+                           show_value=True, debounce=True)
+        for _key, (_label, _start, _stop, _step) in _settings.items()
+    })
+    _labels = {_key: _setting[0] for _key, _setting in _settings.items()}
+
+    def slider_row(key, labels=_labels):
+        """One compact row: label on the left, slider on the right."""
+        return mo.hstack(
+            [mo.Html(f'<span style="font-size: 15px; color: #374151;">{labels[key]}</span>'),
+             scenario_sliders[key]],
+            widths=[0.48, 0.52], align="center", gap=0.5,
+        )
+    return scenario_sliders, slider_row
 
 
 @app.cell(hide_code=True)
 def _(
-    assignments_map_component,
-    markup_slider,
+    BASE_PARAMS,
+    base_result,
+    cost_curve_chart,
+    folium,
     mo,
-    rent_slider,
-    sc,
-    summary_table,
-    tour_cost_slider,
+    plot_assignments_map,
+    run_scenario,
+    scenario_sliders,
 ):
-    sensitivitySlide = sc.create_slide(
-        'Sensitivity analysis: how robust is our solution?',
+    scenario_params = dict(scenario_sliders.value)
+    scenario_result = base_result if scenario_params == BASE_PARAMS else run_scenario(scenario_params)
+
+    def _sized_map(height):
+        _m = plot_assignments_map(scenario_result["assignments"])
+        _m.options["zoom_snap"] = 0.25
+        _m.fit_bounds([[36.0, -9.3], [43.8, 3.3]])  # mainland Spain
+        _m.add_to(folium.Figure(width="100%", height=height))
+        return _m
+
+    lab_map = _sized_map(260)
+    scenario_map = _sized_map(190)
+    lab_chart = cost_curve_chart(base_result, scenario_result, height=210)
+    scenario_chart = cost_curve_chart(base_result, scenario_result, height=150)
+
+    _b, _s = base_result, scenario_result
+    _change = (_s["total"] / _b["total"] - 1) * 100
+    scenario_kpis = mo.Html(
+        f'<span style="font-size: 16px; white-space: nowrap;">'
+        f"<b>Warehouses:</b> {_b['k']} → <b>{_s['k']}</b> &nbsp;·&nbsp; "
+        f"<b>Total cost:</b> {_b['total'] / 1e6:.1f} → <b>{_s['total'] / 1e6:.1f} M€</b> ({_change:+.0f} %)"
+        f"</span>"
+    )
+    lab_kpis = mo.md(
+        f"""
+    | | Warehouses | Fixed costs | Transport costs | Total costs |
+    |---|---:|---:|---:|---:|
+    | Base case | {_b['k']} | {_b['fixed'] / 1e6:.1f} M€ | {_b['transport'] / 1e6:.1f} M€ | {_b['total'] / 1e6:.1f} M€ |
+    | **Scenario** | **{_s['k']}** | **{_s['fixed'] / 1e6:.1f} M€** | **{_s['transport'] / 1e6:.1f} M€** | **{_s['total'] / 1e6:.1f} M€** |
+    """
+    )
+    return (
+        lab_chart,
+        lab_kpis,
+        lab_map,
+        scenario_chart,
+        scenario_kpis,
+        scenario_map,
+    )
+
+
+@app.cell(hide_code=True)
+def _(
+    mo,
+    reset_button,
+    scenario_chart,
+    scenario_kpis,
+    scenario_map,
+    slider_row,
+):
+    def scenario_panel(*keys):
+        """Right column of a scenario slide: the relevant sliders, KPIs, cost curves and map."""
+        controls = mo.vstack([slider_row(k) for k in keys], gap=0.2)
+        return mo.vstack(
+            [
+                controls,
+                mo.hstack([scenario_kpis, reset_button], justify="space-between", align="center"),
+                scenario_chart,
+                scenario_map,
+            ],
+            gap=0.4,
+        )
+    return (scenario_panel,)
+
+
+@app.cell(hide_code=True)
+def _(base_result, cost_curve_chart, mo, sc):
+    tradeOffSlide = sc.create_slide(
+        'Fixed vs. transport costs – where does the optimum come from?',
         layout_type='side-by-side',
         page_number=9
     )
 
-    sensitivitySlide.content1 = mo.md(
-        r"""
-    Our network solution depends on several **cost assumptions**:
+    tradeOffSlide.content1 = mo.md(
+        rf"""
+    **Why does the solver open exactly {base_result['k']} warehouses?**
 
-    - how expensive it is to run a standard warehouse in Spain
-      (base rent and markup for staff, energy, overhead),
-    - how expensive one delivery tour is (truck + driver for a day).
+    To see the trade-off, we solve the model once for every number of warehouses \(k\)
+    and add one constraint: \(\sum_{{j \in J}} y_j = k\).
 
-    These choices directly influence
+    - **Fixed costs** grow with every additional warehouse.
+    - **Transport costs** fall because tours get shorter – but each additional
+      warehouse saves less than the one before.
+    - **Total costs** are lowest where both effects balance.
 
-    - the fixed costs \(f_j\),
-    - the transport costs \(c_{ij}\),
-    - and therefore the optimal number and location of warehouses.
+    **Think about it**
 
-    On the right, we vary these assumptions with sliders and
-    observe when the optimal warehouse network changes.
+    - Why does the curve only start at {base_result['k_min']} warehouses?
+    - The total cost curve is very flat around the optimum.
+      What does this mean for Phoenix?
+
+    We will come back to this chart in every scenario.
     """
     )
 
-    sliders_row = mo.hstack(
-        [
-            mo.vstack([mo.md("**Rent per $m^2$**"), rent_slider], gap=0),
-            mo.vstack([mo.md("**Markup**"), markup_slider], gap=0),
-            mo.vstack([mo.md("**Cost per tour**"), tour_cost_slider], gap=0)
-        ]
+    tradeOffSlide.content2 = mo.vstack([cost_curve_chart(base_result, height=400)])
+
+    tradeOffSlide.render()
+    return
+
+
+@app.cell(hide_code=True)
+def _(lab_chart, lab_kpis, lab_map, mo, reset_button, sc, slider_row):
+    labSlide = sc.create_slide(
+        'Scenario lab: change the assumptions',
+        layout_type='side-by-side',
+        page_number=10
     )
 
-    sensitivitySlide.content2 = mo.vstack(
+    labSlide.content1 = mo.vstack(
         [
-            sliders_row,
-            assignments_map_component,
-            summary_table
-        ]
+            mo.md("**Warehouse (fixed costs)**"),
+            slider_row("size"), slider_row("rent"), slider_row("markup"),
+            mo.md("**Transport**"),
+            slider_row("tour"), slider_row("speed"), slider_row("day"), slider_row("min_stop"),
+            mo.md("**Demand and service**"),
+            slider_row("deliveries"), slider_row("share"), slider_row("max_drive"),
+            reset_button,
+            lab_kpis,
+        ],
+        gap=0.3,
     )
 
-    sensitivitySlide.render()
+    labSlide.content2 = mo.vstack([lab_map, lab_chart], gap=0.5)
+
+    labSlide.render()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo, sc, scenario_panel):
+    interestSlide = sc.create_slide(
+        'Scenario 1: Rising interest rates',
+        layout_type='side-by-side',
+        page_number=11
+    )
+
+    interestSlide.content1 = mo.md(
+        r"""
+    **Situation:** The ECB raises interest rates. Rents for logistics
+    properties in Spain rise from 6 to 8 €/m² per month, and higher financing
+    costs push the markup from 75 % to 90 %.
+
+    **1 · Predict** – before you touch a slider: more, fewer or the same
+    number of warehouses? Which cost curve moves?
+
+    **2 · Test** – set rent and markup on the right.
+
+    **3 · Explain** – use the cost curves (dashed = base case).
+
+    **4 · Dig deeper** – How high do rents have to rise before Phoenix
+    closes a warehouse?
+
+    **Discuss:** Higher interest rates also make inventory more expensive –
+    and our model ignores inventory. Would this push Phoenix towards
+    fewer or more warehouses?
+    """
+    )
+
+    interestSlide.content2 = scenario_panel("rent", "markup")
+
+    interestSlide.render()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo, sc, scenario_panel):
+    dieselSlide = sc.create_slide(
+        'Scenario 2: Diesel price shock',
+        layout_type='side-by-side',
+        page_number=12
+    )
+
+    dieselSlide.content1 = mo.md(
+        r"""
+    **Situation:** The diesel price jumps from 1.50 € to 2.25 € per litre.
+
+    **1 · Estimate** – How much does this increase the cost per tour
+    (today 400 €)?
+
+    **2 · Predict, test, explain** – set the new cost per tour on the right.
+
+    **3 · Dig deeper** – From which cost per tour does the network change?
+    Which real-world shocks could push tour costs that high?
+
+    **Discuss:** In our model, a tour costs the same no matter how far it
+    goes – but fuel costs depend on kilometres. Which regions does the
+    price shock really hit hardest?
+    """
+    )
+
+    dieselSlide.content2 = scenario_panel("tour")
+
+    dieselSlide.render()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo, sc, scenario_panel):
+    congestionSlide = sc.create_slide(
+        'Scenario 3: Congestion and low-emission zones',
+        layout_type='side-by-side',
+        page_number=13
+    )
+
+    congestionSlide.content1 = mo.md(
+        r"""
+    **Situation:** More traffic and new low-emission zones in Spanish cities
+    slow down Phoenix's vans: the average speed drops from 70 to 55 km/h.
+
+    **1 · Predict** – How strong is the effect compared to the diesel shock?
+
+    **2 · Test** – set the average speed on the right.
+
+    **3 · Explain** – Which parts of our transport cost calculation depend
+    on the speed? Also look at where the cost curves start.
+
+    **Discuss:** Why does the network react so differently to slower vans
+    than to the diesel price shock?
+    """
+    )
+
+    congestionSlide.content2 = scenario_panel("speed")
+
+    congestionSlide.render()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo, pharmacies_aggregated, sc, scenario_panel):
+    deliveriesSlide = sc.create_slide(
+        'Scenario 4: Two deliveries per day',
+        layout_type='side-by-side',
+        page_number=14
+    )
+
+    _n_pharmacies = int(pharmacies_aggregated["pharmacies"].sum())
+    deliveriesSlide.content1 = mo.md(
+        rf"""
+    **Situation:** German pharmacies receive several deliveries per day.
+    Spanish pharmacies now ask Phoenix for the same service:
+    two deliveries per day instead of one.
+
+    **1 · Predict** – How does the network change? Which cost curve moves?
+
+    **2 · Test and explain** – set the deliveries per day on the right.
+
+    **3 · Business case** – Phoenix serves {_n_pharmacies:,} pharmacies on
+    250 days per year. Which surcharge per additional delivery covers
+    the extra cost?
+
+    **Discuss:** Re-optimising saves about 1.1 M€ per year compared with
+    keeping today's 9 warehouses – but Phoenix would have to open 6 and
+    close 2. Would you do it? What else would you need to know?
+    """
+    )
+
+    deliveriesSlide.content2 = scenario_panel("deliveries")
+
+    deliveriesSlide.render()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo, sc, scenario_panel):
+    marketEntrySlide = sc.create_slide(
+        'Scenario 5: Entering a new market',
+        layout_type='side-by-side',
+        page_number=15
+    )
+
+    marketEntrySlide.content1 = mo.md(
+        r"""
+    **Situation:** Phoenix will not win all Spanish pharmacies at once.
+    For the first years, it expects a market share of about 30 %.
+
+    **1 · Predict** – How many warehouses – and where?
+
+    **2 · Test** – set the market share and compare the map with the
+    base case (page 8).
+
+    **3 · Explain** – Why is there no warehouse in Madrid,
+    Spain's largest market?
+
+    **Discuss:** Phoenix plans to reach 100 % within five years. Should it
+    build the network that is optimal for 30 % today – or start with part
+    of the network that is optimal for 100 %?
+    """
+    )
+
+    marketEntrySlide.content2 = scenario_panel("share")
+
+    marketEntrySlide.render()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo, sc, scenario_panel):
+    technologySlide = sc.create_slide(
+        'Scenario 6: New technologies',
+        layout_type='side-by-side',
+        page_number=16
+    )
+
+    technologySlide.content1 = mo.md(
+        r"""
+    **Situation:** Two technologies could change pharmaceutical distribution:
+    autonomous trucks and delivery drones.
+
+    **1 · Translate** – Which assumptions does each technology change,
+    and in which direction?
+
+    **2 · Build your scenario** – set the sliders and note how many
+    warehouses Phoenix needs.
+
+    **3 · Defend it** – Compare your scenario with your neighbours'.
+    Why do you end up with different networks?
+
+    **Discuss:** A delivery drone carries one small parcel and flies about
+    20 km. What does that mean for Phoenix's warehouse network? For which
+    deliveries would drones make sense?
+    """
+    )
+
+    technologySlide.content2 = scenario_panel("tour", "speed", "day", "max_drive")
+
+    technologySlide.render()
     return
 
 
@@ -1249,7 +1747,7 @@ def _(mo, sc):
     limitationsSlide = sc.create_slide(
         'How simple is our model – and what could we add?',
         layout_type='1-column',
-        page_number=10
+        page_number=17
     )
 
     limitationsSlide.content1 = mo.md(
@@ -1279,7 +1777,7 @@ def _(mo, sc):
     blockSummarySlide = sc.create_slide(
         'Phoenix enters Spain – what you should take away',
         layout_type='1-column',
-        page_number=11  # adjust if needed
+        page_number=18
     )
 
     blockSummarySlide.content1 = mo.md(
@@ -1300,8 +1798,9 @@ def _(mo, sc):
     3. **Solving and analysing the network**  
        - Implemented the WLP in Python with PuLP and solved it for Spain.  
        - Visualised the optimal network on a map and separated fixed and transport costs.  
-       - Performed sensitivity analysis to see how cost assumptions change
-         the number and location of warehouses.
+       - Used the trade-off between fixed and transport costs to analyse business
+         scenarios: interest rates, fuel prices, congestion, service level,
+         market entry and new technologies.
     """
     )
 
