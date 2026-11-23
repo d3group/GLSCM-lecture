@@ -14,6 +14,7 @@ can run them in the browser without installing anything.
 | `apps/center_of_gravity.py` – Phoenix enters Spain: Center of Gravity | https://d3group.github.io/GLSCM-lecture/center_of_gravity/ |
 | `apps/warehouse_location_part_1.py` – Warehouse Location Problem (model) | https://d3group.github.io/GLSCM-lecture/warehouse_location_part_1/ |
 | `apps/warehouse_location_part_2.py` – Warehouse Location Problem (solution and analyses) | https://d3group.github.io/GLSCM-lecture/warehouse_location_part_2/ |
+| `apps/vehicle_routing.py` – Fulfillment and last mile: Vehicle Routing with Time Windows | https://d3group.github.io/GLSCM-lecture/vehicle_routing/ |
 
 Jupyter versions are available under `https://d3group.github.io/GLSCM-lecture/downloads/<notebook>.ipynb`.
 
@@ -24,7 +25,7 @@ apps/
   *.py              marimo notebooks
   d3.css            shared styling
   layouts/          slide layouts
-  public/           data and images (cog/, wlp/)
+  public/           data and images (cog/, wlp/, vrptw/)
 .github/workflows/  export to WebAssembly and deploy to GitHub Pages
 ```
 

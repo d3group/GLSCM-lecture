@@ -1,0 +1,56 @@
+{
+  "dataset": "VRPTW Scenario Analysis Dataset",
+  "created": "2025-09-16T12:09:19.889431",
+  "description": "Vehicle Routing Problem with Time Windows optimization results for multiple scenarios",
+  "parameters": {
+    "radii": [
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75
+    ],
+    "client_time_window_lengths_hours": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "service_times_sec": [
+      60,
+      120,
+      180,
+      240,
+      300,
+      360,
+      420,
+      480,
+      540,
+      600
+    ],
+    "client_time_window_start": "07:00",
+    "depot_time_window": "05:00-19:00"
+  },
+  "total_scenarios": 1350,
+  "files": {
+    "pharmacies.parquet": "All pharmacy locations with distance calculations",
+    "scenarios.csv": "Summary metrics for all scenarios",
+    "routes/scenario_*.json": "Detailed route data with OSRM geometries",
+    "completed.txt": "Checkpoint file for resumable execution"
+  }
+}

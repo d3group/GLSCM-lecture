@@ -1,0 +1,620 @@
+category,name,lat,lon
+pharmacy,Kleeblatt-Apotheke,49.4763372,10.988697
+pharmacy,Hirsch-Apotheke,49.4740389,10.9889007
+pharmacy,Ost-Apotheke,49.4643758,11.1191741
+pharmacy,Apotheke Medizentrum,49.5922659,11.0263272
+pharmacy,West-Apotheke,49.4796601,10.9568289
+pharmacy,Linden-Apotheke,49.5078722,10.8811487
+pharmacy,Birkenwald-Apotheke,49.4222789,11.0317702
+pharmacy,Fleming-Apotheke,49.5675707,10.9616032
+pharmacy,Stadtpark-Apotheke,49.4683054,11.0907302
+pharmacy,Bären-Apotheke,49.5812956,11.0103667
+pharmacy,Jordan-Apotheke,49.5845272,10.99485
+pharmacy,Sankt Ulrich Apotheke,49.460238,11.1317068
+pharmacy,Franconia-Apotheke an der Burg,49.4637589,11.0704211
+pharmacy,Hirsch-Apotheke,49.4611372,11.0720593
+pharmacy,Niederbronner Apotheke,49.4688099,11.1105735
+pharmacy,St. Sebastian-Apotheke,49.4597647,11.1038233
+pharmacy,Theresien-Apotheke,49.4701476,11.1073791
+pharmacy,St. Johannis-Apotheke,49.4585334,11.065718
+pharmacy,Apotheke Hohe Marter,49.4282493,11.0435923
+pharmacy,City-Apotheke,49.4502426,11.0787937
+pharmacy,Apotheke am Kieselbühl,49.4851429,10.9560513
+pharmacy,Kugel-Apotheke,49.455588,11.0770106
+pharmacy,Parcside-Apotheke,49.4617766,11.0922822
+pharmacy,Maxfeld-Apotheke,49.4614078,11.0927312
+pharmacy,Ronhof-Apotheke,49.4903731,10.9954019
+pharmacy,Deutschherrn-Apotheke,49.4496228,11.0625818
+pharmacy,Malteser-Apotheke,49.461851,11.0826436
+pharmacy,Meilwald-Apotheke,49.5933789,11.0269588
+pharmacy,Pharma24 Apotheke Erlangen,49.5775681,10.9919038
+pharmacy,Föhren-Apotheke,49.4779264,11.1060987
+pharmacy,Ludwigs-Apotheke,49.4498426,11.0580569
+pharmacy,Medicon-Apotheke,49.5882868,10.9759178
+pharmacy,Nord-Apotheke,49.477054,11.0676389
+pharmacy,Kilian-Apotheke,49.4739025,11.0661039
+pharmacy,Felicitas-Apotheke,49.5304313,11.0163565
+pharmacy,Friedrichs-Apotheke,49.472665,10.9899809
+pharmacy,Mozart-Apotheke,49.4677269,11.0586761
+pharmacy,Medicon-Apotheke,49.442124,11.045468
+pharmacy,Medicon,49.4394524,11.0367129
+pharmacy,Schiller-Apotheke,49.464686,11.0864396
+pharmacy,Andreas-Apotheke,49.5171748,11.0238699
+pharmacy,Medicon-Apotheke,49.4623937,11.070662
+pharmacy,Vita-Apotheke,49.4212155,11.0315524
+pharmacy,Apotheke Buchenbühl,49.5054824,11.1071297
+pharmacy,Rathaus-Apotheke,49.4316332,10.9690007
+pharmacy,Ziegelstein-Apotheke,49.4860466,11.1097639
+pharmacy,Alpha-Apotheke,49.4559592,10.9891956
+pharmacy,Jordan-Apotheke,49.5897256,11.0003373
+pharmacy,Altstadtapotheke,49.4792373,10.9856192
+pharmacy,Ritter-Apotheke,49.4614252,11.0551664
+pharmacy,Fleming-Apotheke,49.4396945,11.0673908
+pharmacy,Apotheke im Metropol Medical Center,49.4495483,11.0037416
+pharmacy,Ring-Apotheke,49.5914317,11.0073115
+pharmacy,Kolibri-Apotheke,49.5920669,11.0291832
+pharmacy,Aesculap-Apotheke,49.4637104,11.0015845
+pharmacy,MEDICON Apotheke,49.4326755,11.0466969
+pharmacy,Mohren-Apotheke St. Leonhard,49.441927,11.0506514
+pharmacy,Kreuz-Apotheke,49.4516054,11.054384
+pharmacy,Richard-Wagner-Apotheke,49.4726835,11.102938
+pharmacy,Spital-Apotheke,49.4529928,11.0782099
+pharmacy,Katharinen-Apotheke,49.4600659,11.1038745
+pharmacy,Apotheke Sebalder Höfe,49.4573265,11.0876352
+pharmacy,Apotheke im ARAG-Haus,49.4472777,11.0666352
+pharmacy,Herz-Apotheke,49.4277586,11.0665311
+pharmacy,Storchen Apotheke,49.4329327,11.0784852
+pharmacy,Medicon-Apotheke,49.4405032,11.0809369
+pharmacy,Merkur-Apotheke,49.4413137,11.0811325
+pharmacy,Mohren-Apotheke Südstadt,49.4404253,11.0804834
+pharmacy,Gudrun-Apotheke,49.4364008,11.0886628
+pharmacy,Kosmos-Apotheke,49.4394568,11.0901175
+pharmacy,Wilhelm-Busch-Apotheke,49.4405686,11.0904965
+pharmacy,Werderau-Apotheke,49.4223341,11.0618121
+pharmacy,Eichendorff-Apotheke,49.4415808,11.0949542
+pharmacy,Wodan-Apotheke,49.4374945,11.0958254
+pharmacy,Nürbanum-Apotheke,49.4336229,11.0966819
+pharmacy,Goldbach-Apotheke,49.4448776,11.109424
+pharmacy,Germania-Apotheke,49.4301584,11.0865879
+pharmacy,Noris-Apotheke,49.4589807,11.0968248
+pharmacy,Bismarck-Apotheke,49.462764,11.1021059
+pharmacy,Theatergasse,49.4495784,11.0798994
+pharmacy,Apotheke Gebersdorf,49.4342348,10.9980337
+pharmacy,Jakobinen-Apotheke,49.4692926,11.0019297
+pharmacy,Dürer-Apotheke,49.4908051,10.9714219
+pharmacy,Apotheke zur Grünen Schlange,49.4891494,10.9231533
+pharmacy,Bären-Apotheke,49.4180176,10.984849
+pharmacy,Einhorn-Apotheke,49.4505182,11.0731978
+pharmacy,Bavaria-Apotheke,49.4629758,10.9866183
+pharmacy,Apotheke am Stadtwald,49.4662125,10.9440684
+pharmacy,St.-Pauls-Apotheke,49.4676612,10.9908957
+pharmacy,Pluspunkt-Apotheke,49.4699509,11.1014064
+pharmacy,Martin-Behaim-Apotheke,49.4303993,10.9566359
+pharmacy,Apotheke im Forum,49.4706992,10.9918953
+pharmacy,Poppenreuther Apotheke,49.4818974,11.0092938
+pharmacy,Easy-Apotheke,49.4348224,11.0405191
+pharmacy,Apotheke am Kaulbachplatz,49.4634116,11.0777955
+pharmacy,Merian Apotheke,49.4462384,11.0825625
+pharmacy,Medicon-Apotheke,49.447621,11.0653567
+pharmacy,Glockenhof-Apotheke,49.443443,11.0878265
+pharmacy,Pfauen-Apotheke,49.4211325,11.0195834
+pharmacy,Apotheke am Markt,49.4418509,10.9574119
+pharmacy,Lyra-Apotheke,49.4579751,11.0590815
+pharmacy,Medicon-Apotheke,49.4727345,10.9880913
+pharmacy,Gustav-Adolf-Apotheke,49.4429333,10.9580847
+pharmacy,Gostenhof-Apotheke zu Sankt Anton,49.4515332,11.0483247
+pharmacy,Sternen-Apotheke,49.5613623,10.9150177
+pharmacy,Andreas-Apotheke,49.5182594,11.0328573
+pharmacy,Frosch-Apotheke,49.5248779,10.9642957
+pharmacy,Mohren-Apotheke,49.4777374,10.9886973
+pharmacy,Medicon-Apotheke,49.5903652,11.0061511
+pharmacy,Linden-Apotheke,49.5243311,10.9054028
+pharmacy,Medicon,49.4408663,10.9593029
+pharmacy,Medicon-Apotheke,49.4508323,11.0727916
+pharmacy,Rosen-Apotheke,49.4845294,11.1058635
+pharmacy,Admira-Apotheke,49.4567451,11.0371654
+pharmacy,Forum-Apotheke,49.4809254,11.0626508
+pharmacy,Mohren-Apotheke,49.4705046,11.0181297
+pharmacy,Ahorn-Apotheke,49.4718522,11.1039756
+pharmacy,Kugel-Apotheke,49.441144,10.9620585
+pharmacy,Malzböden-Apotheke,49.4663107,10.9856322
+pharmacy,Apotheke im Village,49.4419795,11.0274021
+pharmacy,ABF-Apotheke,49.4679592,11.0006856
+pharmacy,ABF Apotheke,49.4713199,10.9922652
+pharmacy,Adler-Apotheke,49.508089,10.9775855
+pharmacy,Medicon Apotheke,49.4313168,10.9706012
+pharmacy,Medicon-Apotheke,49.4719024,11.1023592
+pharmacy,Apotheke am Europakanal,49.4676464,10.9571525
+doctors,Allgemeinarztpraxis Werderau,49.4231173,11.0621614
+doctors,KVB Bereitschaftspraxis,49.4474975,11.0854454
+doctors,Parcside Medical Center,49.4619771,11.0924673
+doctors,Dr. med. Rainer Weber,49.466319,11.1012174
+doctors,Dr.med. David Homburg,49.5931437,11.0268542
+doctors,Dr. med. Christoph Brückner,49.5939719,11.009522
+doctors,Dr. med. Th. Ruppert,49.5532529,11.0172998
+doctors,Notfallpraxis Erlangen,49.5902677,11.0052108
+doctors,ABC Ambulantes BehandlungsCentrum in Nürnberg-Thon,49.4770363,11.0678673
+doctors,Praxis Schniegling,49.4688822,11.0270535
+doctors,Hazha Gharib,49.4692258,11.0578735
+doctors,HNO in Mögeldorf,49.4601683,11.1314726
+doctors,"Dres. med. Graf, Beier, Mattonet",49.5751577,10.9970678
+doctors,Dr. med. Thomas Ott,49.4602952,11.1316192
+doctors,"Dr. Zink, Dr. Stingl",49.4603245,11.1316616
+doctors,Dr. med. Wolfgang Landendörfer,49.4604633,11.131918
+doctors,Dr. med. Brigitte Bock,49.4603572,11.1317072
+doctors,Dr. med. Hans-Joachim Förster,49.4809375,10.9764458
+doctors,Dr. med. Elena Eder,49.4808787,10.9987284
+doctors,Dr.med. W. Romming,49.4815018,10.9987184
+doctors,Allgemeinarztpraxis Havel/Mölkner,49.4592474,11.0335272
+doctors,Dr. Eder-Schmid,49.4678934,11.0585404
+doctors,Dr. Just,49.4678458,11.0585441
+doctors,Dr. Vogelgsang,49.4623423,11.0705436
+doctors,Dr. Abelein und Dr. Helm,49.4316171,11.087953
+doctors,Dr. Hergdt,49.5293685,10.9075354
+doctors,Praxis Dr. Renard & Kollegen – Erlangen-Bruck,49.5707085,10.9850827
+doctors,Dr. med. D. Beuthner,49.4798142,10.9779825
+doctors,Dr. med. Miriam Michaela Braunwarth,49.5900175,11.0063314
+doctors,Lina Bischoff,49.4592913,11.077841
+doctors,Fachärztin für Allgemeinmedizin Martina Schmidt,49.5901285,11.0508195
+doctors,Betriebsärztliche Dienststelle Siemens Erlangen Süd,49.5753501,11.0056691
+doctors,Diabetes in Fürth,49.4712957,10.9908704
+doctors,Dr. med. Neufanger,49.453734,11.1263004
+doctors,Dr. med. Ozan Y. Tektaş,49.5931942,11.0050592
+doctors,Dr. med. Hendrikus Seyer,49.5932717,11.0177716
+doctors,"Arztpraxis für Allgemeinmedizin, Dr. med Andrea Benedicter, Dr. med Ulrike Sattler",49.5891341,11.0115526
+doctors,Achim Buchhauser,49.524969,10.9644493
+doctors,Orthopraxis Altreuther & Klug,49.4706376,11.1019337
+doctors,Praxis Dr. Renard & Kollegen – Innenstadt,49.4526245,11.0683026
+doctors,Brambrink,49.4652758,11.0700118
+doctors,Logopädie Hallmann,49.4654134,11.0712037
+doctors,Dr. Mühlhofer / Dr. Cidlinsky,49.4446509,11.1118008
+doctors,Michael Veh-Hölzlein,49.4740449,10.9890801
+doctors,Dr. Med. Gunther Hirsch und Dr. Med. Dragica Cupic,49.4669113,11.1263782
+doctors,Dr. med. Rani Palackal-Schmenger,49.5776483,10.9917558
+doctors,"Dres. med. Hoepffner-Grundy, Cabuk",49.5897625,11.0009702
+doctors,MVZ Fürth,49.473908,10.9905521
+doctors,Dr. med. Peter Heßler,49.4725572,10.9904213
+doctors,Dr. med. Irmtraud Pribylla,49.5813583,11.0265049
+doctors,Dr. Martin Schmidt,49.4559019,11.1175345
+doctors,Dr. Poreisz und Kollegen,49.4505133,11.0785785
+doctors,Carmen und Dietmar Bromberger,49.5792203,11.0198691
+doctors,Dr. med. Peter Polyanszky,49.5793314,11.0211799
+doctors,HNO-Praxis Dr. med. Friedrich Günthner,49.472593,11.1037704
+doctors,Sandra Nguyen & Michael Nguyen,49.4737412,10.9873616
+doctors,Dr. med Stefan Plank,49.4624572,11.1021996
+doctors,Dr. med. Hartmut Neuner,49.4890468,10.9254829
+doctors,Dr. med. Habib Ghamin & Peter Schlaffer,49.489442,10.922715
+doctors,Gemeinschaftspraxis Hagenmiller/Jeserich,49.4499689,11.0792381
+doctors,"Thomas Ebert, Kinderarzt",49.5072998,10.8827464
+doctors,E. Ritter & B. Böhner,49.4174605,10.9866913
+doctors,HNO-Praxis Kollert und Kollegen,49.4495862,11.0799313
+doctors,Kinderärzte Zirndorf,49.4422265,10.9591517
+doctors,medizinplusarbeit,49.4700718,10.9929074
+doctors,Dr. Pellengahr,49.4728691,10.9880169
+doctors,Dr. med. U. Krämer,49.4728058,10.9879672
+doctors,J. Burgmayr - Dr. med. G. J. Blatterspiel,49.4728612,10.9877318
+doctors,Dr. Fischer & Dr. Lober,49.4727697,10.9879526
+doctors,E. Jauernik,49.4659655,11.0789719
+doctors,Gerhard Gradl,49.4668509,11.0692363
+doctors,Kinderärzte am Südpunkt,49.4310279,11.086707
+doctors,HNO-Praxis Dr. M. C. Wigand,49.4521498,11.0825932
+doctors,Synlab,49.4596401,11.0343065
+doctors,Ambulantes OP-Zentrum Erlangen,49.589469,11.0012647
+doctors,Orthopädie Chirurgie Erlangen-Ebermannstadt,49.5906461,11.0036273
+doctors,"Gemeinschaftspraxis Sabine Hofius, Stephan Pühlhorn, Dr. Med Dirk Altrichter",49.459751,11.1039083
+doctors,Frau Dr. Omeima Marx,49.4604961,11.1050333
+doctors,Dr. med. Katrin Lang-Speaight,49.5615439,10.9137206
+doctors,Ärztliche Bereitschaftspraxis,49.4845791,10.9765656
+doctors,HNO-Arztpraxis,49.4735251,10.9929798
+doctors,Hausarztpraxix Ivan Fintan,49.4639541,11.0899106
+doctors,Prof. Dr. med. Eberhard Lang,49.4809563,10.9764506
+doctors,Frauenweise,49.4582603,11.0630788
+doctors,Dr. Charlotte Steiner,49.4585562,11.0639736
+doctors,RTZ Nürnberg,49.434563,11.0483554
+doctors,"Praxis für Allgemeinmedizin, Innere Medizin, Naturheilverfahren",49.460254,11.0989502
+doctors,ocumedic,49.4642873,11.1189189
+doctors,Frauenärztliche Praxisgemeinschaft,49.4512379,11.073228
+doctors,Dr. med. Britta Sonnenschein,49.4650806,11.1270395
+doctors,Radiologisch-Nuklearmedizinisches Zentrum,49.4596167,11.0959715
+doctors,"Dr. Toraman und Kollegen, Dr. Polo Leon",49.4641103,11.0548117
+doctors,"Dres. Eger, Schremp",49.4360999,11.0829582
+doctors,medneo Diagnostikzentrum Nürnberg,49.4624639,11.0670329
+doctors,Facharzt Forum Fürth,49.4707674,10.992274
+doctors,MediCara,49.5923775,11.0197704
+doctors,Dr. phil. Peter Ullmann,49.4656793,11.0893673
+doctors,Herr Dr. med. Joachim Konrad,49.4180464,10.9848967
+doctors,HNO Praxis Christian Welsch,49.507313,10.8826809
+doctors,Praxis für Kinder- und Jugendmedizin,49.4723099,11.1000476
+doctors,Schönleben & Dr. Kirschner,49.4580968,11.0590482
+doctors,Dr. Bonescu,49.4507181,11.0732881
+doctors,ABC Zentrum,49.4640073,11.0599747
+doctors,"Sven Hoh, HNO-Arzt",49.4600958,11.0811147
+doctors,Neuropraxis Nürnberg,49.4616351,11.082598
+doctors,"Orthopädische Praxis Drs. Wiesel, Wendl",49.461815,11.0826568
+doctors,Dr. Schröder,49.4618052,11.0826719
+doctors,"Drs. Vollmuth, Weigert",49.4618265,11.081125
+doctors,Kinder- und Jugendärztin Dr. med. A. Strobel,49.5895061,10.9687795
+doctors,Kinderwunschzentrum Erlangen Dr. Jan van Uem,49.5892442,11.0011243
+doctors,MKG Erlangen Dr. med. univ. Schlotmann & Dr. Dr. Bender,49.5891821,11.0010257
+doctors,Dr. Gabriele Kobras,49.5895348,11.0013897
+doctors,Hausarztpraxis am Anger,49.5895085,11.0013477
+doctors,"HNO-ärtzliche Gemeinschaftspraxis Suttner, Hetzel, Gottwald",49.5894473,11.0013019
+doctors,"A. Koch, C. Gerdemann, S. Kimpel",49.5899118,11.0003274
+doctors,Priv.-Doz. Dr. med. Matthias Dütsch,49.5899484,11.0005429
+doctors,Dr. Thomas Häupler,49.4624336,11.0819891
+doctors,MVZ Chirugie,49.4599124,11.0826851
+doctors,Allgemeinarztpraxis Tennenlohe,49.5517921,11.0244028
+doctors,Dr. Christine Buda,49.446311,11.0789569
+doctors,Prof. Dr. Med. Braun-Scharm,49.4658705,11.0705454
+doctors,Orthopädie Nürbanum,49.4334039,11.0966724
+doctors,Hausarztpraxis im Nürbanum,49.4334203,11.0969008
+doctors,Radiologie im Nürbanum,49.4333494,11.0968371
+doctors,Frauenärztinnen,49.5883286,10.9760445
+doctors,Gemeinschaftspraxis Dr. med. Jürgen Neumaier & Dr. med. Birgit Lang,49.5883032,10.976039
+doctors,Haut- und Laserzentrum,49.5883435,10.9760481
+doctors,Gemeinschaftspraxis Dr. Lipécz und Dr. Fenzel,49.4608128,11.0793812
+doctors,Rietsch,49.4442509,11.0904959
+doctors,Krafft & Kollegen,49.4594084,10.9293617
+doctors,Priv.-Doz. Dr. med. Matthias Regenfus,49.4576683,11.1274955
+doctors,Dr. med. Anja Regenfus,49.4576862,11.1274908
+doctors,Gemeinschaftspraxis Leschinski,49.4634088,11.0969216
+doctors,Bangemann,49.439295,11.0982938
+doctors,Pekarek & Geistreiter,49.4399144,11.0904402
+doctors,"Dr. Carolin Stockmayer, Dr. Kathrin Reulecke",49.4632752,11.1001685
+doctors,Dr.med. Iris Birkmann,49.4174704,10.9849697
+doctors,Augenzentrum Erlangen,49.5935916,11.0050161
+doctors,Dr. Kreutz,49.5625289,10.909768
+doctors,"Allgemeinarztpraxis Dr. med. B. Hofmann, Dr. med. J. Baum",49.4567613,10.9911548
+doctors,Praxis W. Heimgärtner / A. Donhauser / G. Hertel / A. Heid,49.4902969,10.9955938
+doctors,Meyer und Kocher,49.4585251,11.0658164
+doctors,Dr. med. Dieter Kern,49.449848,11.058153
+doctors,Diabetologie Nürnberg Nord,49.4663496,11.071755
+doctors,Dr. Med. Stefanie Sisi,49.4663052,11.0717716
+doctors,HNO Praxis Dr. Mathias C. Heißenberg,49.4507199,11.0829216
+doctors,Dr. med. Dorothea Schmidt-Colberg,49.5800566,11.0051746
+doctors,Hautarztpraxis Dr. Gall,49.4732026,10.9890796
+doctors,"Dr. med. Stephan Eichinger, Dr. med. Holger Herzing",49.4655163,11.1205251
+doctors,"Dr. med. Christian Schacher, Dr. med. Sven Grensemann",49.4654996,11.120465
+doctors,Praxis für Urologie Dr. Peter Schmidt,49.4506251,11.0728756
+doctors,Orthopädie Centrum Erlangen,49.5883159,11.0049347
+doctors,Internistische Schwerpunktpraxen,49.5882497,11.0039956
+doctors,Amalien 65,49.467382,10.9920829
+doctors,Dr. med. M. Maar,49.491584,10.9563926
+doctors,Dr. Vogt Ladner,49.4786592,10.9752032
+doctors,HNO in den Sebalder Höfen,49.457316,11.0875164
+doctors,Dr. (IR) Farahzad Nickfar,49.4437971,11.0901978
+doctors,Taisa Spiess,49.4314728,11.0821113
+doctors,Dr. med. Helmut Sörgel,49.4600686,11.0860192
+doctors,Dr. med. Rosemarie Hofmann,49.4642549,11.0764536
+doctors,"Urologen Engemann, Kalb, Franke, Heiland",49.4711308,10.9946242
+doctors,"Dr. Mocny & Kollegen, Innere, Kardiologie",49.4494298,10.9979503
+doctors,Ulrike Scharnweber,49.5513259,11.0238477
+doctors,Naturheilpraxis Safr,49.549429,11.0281747
+doctors,Dr. med. Corinna Bernard,49.5930742,11.0177517
+doctors,Dr. Olga Strahl,49.4222663,11.0318984
+doctors,Augenärztliche Gemeinschaftspraxis Dres. Lang,49.4576185,11.0872485
+doctors,Dr. med. J. Blechschmidt,49.4418906,10.9574094
+doctors,Helmut Bartsch und Barbara Bartsch,49.4418849,10.9576692
+doctors,"Dr. Marcel Kohl, Dr. Vanadis Kamm-Kohl",49.4788251,11.1063794
+doctors,"Chirurgische Gemeinschaftspraxis Dr. Gruber, Dr. Loos, Dr. Metzeler",49.4391952,10.9489093
+doctors,praxis neurologie weber genow erlangen,49.590542,11.0110062
+doctors,MRT Nürnberg,49.481926,11.0594007
+doctors,Ambulante OP des ABC Zentrums,49.4630475,11.0610617
+doctors,Kardiologie Dr. med. Z. Bal,49.4710494,11.0840781
+doctors,Dr. Kramer und Kollegen,49.4475434,11.0854787
+doctors,Kinderarztpraxis Delphin Dima Anani,49.4636962,11.0016147
+doctors,Dr. Harald G. Thiedemann,49.4636777,11.0016175
+doctors,Augen und OP Zentrum Zirndorf,49.4420341,10.9574757
+doctors,Dr. Frank Blaich-Gewert,49.4639325,11.0795749
+doctors,Gemeinschaftspraxis Durmaz,49.44053,11.0810572
+doctors,Kardiologische Praxis Dr. Langhammer & Dr. Pfund,49.4434424,11.0805975
+doctors,Orthopädische Privatpraxis für Bewegung und Lebensfreude,49.5897367,11.0007144
+doctors,A.-C. Klein,49.5926622,11.0267863
+doctors,Orthopädische Privatpraxis Ralf Knieling,49.465028,11.1269408
+doctors,Kinderwunsch Erlangen,49.5916805,11.0050698
+doctors,Noris Radiologie,49.4571745,11.0682781
+doctors,MVZ Hallerwiese - Gynäkologie,49.4571525,11.0681832
+doctors,Christian Wittmann,49.4852368,10.9561256
+doctors,Medipraxis an der Rosenau. Praxis für Chirurgie & Ästhetik,49.4494257,11.0617106
+doctors,Cenk Dikici,49.4560722,11.0393907
+doctors,Hausarztzentrum Erlangen,49.5814913,11.0055383
+doctors,Hausarztpraxis im Glockenhof,49.4400996,11.0904905
+doctors,Hautarztpraxis Renate Bernt,49.4534645,11.0778018
+doctors,Dr. G. Bauer-Niedermaier,49.4409622,10.9593497
+doctors,Dr. med. Sascha Altmaier,49.5645577,10.9593745
+doctors,Dr. med. Jörn Prall,49.4555815,11.0767939
+doctors,Praxis für Innere Medizin und Pneumologie,49.471732,11.1021707
+doctors,Frauenarztpraxis Jamila Hagge-Masoud,49.589838,11.000916
+doctors,Viselle Augenzentrum OP-Zentrum Erlangen,49.5899085,11.0047025
+doctors,Engelhardt,49.4540472,11.0695704
+doctors,Hautarzt Dr. Monika Weiß,49.4675715,10.9572061
+doctors,Dr. Andrea Mitrou-Knapp,49.484353,10.9562252
+doctors,Arztpraxis Dr. Exner,49.4795775,10.9695852
+doctors,Dr. medic Alina Nastasa,49.4808071,10.9800426
+doctors,Dr. Zerbes,49.486916,10.9710579
+doctors,Dr. Angelika Dietzel und Dr. Jan Dietzel-Sagrudny,49.4647565,10.9916085
+doctors,"Dres. med. B. Luger, F. Posch",49.4814094,10.9987172
+doctors,Dr. med. Jörg Sebastian,49.461253,11.0742481
+doctors,Kinder- und Jugendarztpraxis Dr. med. Birgit Fritscher,49.461714,11.0751341
+doctors,Dr. Jan Dunker,49.4791152,11.0017099
+doctors,Hautarztpraxis Malgorzata Pawlowska-Kisiel,49.5665059,11.0010554
+doctors,Podologie PP,49.433296,11.0870461
+doctors,Dr. med. Dominik Stolz,49.4615046,11.0718323
+doctors,"Urologische Praxis Dr. med. J. Fleischmann, Dr. med. T. Rith",49.5932045,11.0051754
+doctors,12649865701,49.4506986,11.0727542
+doctors,Frau Dr. med. Cornelia Wischer Kinder- u. Jugendärztin,49.4903072,10.9954913
+doctors,Dr. Pröschel und Kollegen,49.4646615,10.9856529
+doctors,Priv.-Doz. Dr. Volker Krutsch,49.4642686,11.1188366
+doctors,HNO in der Ostermayr-Passage,49.4501281,11.0790366
+doctors,"Maxi Augenärzte, Dr. med. Wolfram Wehner",49.449429,11.0706993
+doctors,Augenzentrum Nürnberg,49.4515086,11.0727118
+doctors,OSG MVZ an der Lorenzkirche,49.4511473,11.0756698
+doctors,Praxis M. Tahir Anwari,49.4485862,11.080714
+doctors,HNO Zirndorf,49.4398674,10.9620728
+doctors,Hausärzte am Stresemannplatz,49.4590102,11.0967375
+doctors,Amalia Herineanu,49.4585326,11.0658197
+doctors,Haide & Kollegen,49.4585046,11.0658108
+doctors,HNO im Zentrum,49.590731,11.0051035
+doctors,Gemeinsam Gesund,49.5899497,11.0004725
+doctors,Augenarztpraxis Botros & Kollegen,49.5897762,11.0007839
+doctors,"Dr. Aust, Praktischer Arzt",49.4453329,11.1091116
+doctors,Dr. Düz/Dr. König,49.591785,11.0254677
+doctors,Gemeinschaftspraxis Köhler Tost,49.4691585,11.0022587
+doctors,Betriebsarzt,49.5896562,11.0086454
+doctors,Praxis Dr. Renard & Kollegen – Sündersbühl,49.4420459,11.0453163
+doctors,Praxis Dr. Renard & Kollegen – Tullnau,49.4550414,11.1161988
+doctors,Dr. Otto Kunz,49.4318345,11.0021118
+doctors,Dr. med. Michael Wlassow,49.4803964,10.9820475
+doctors,Praxis Dr. Toraman & Kollegen,49.4472059,11.0641582
+doctors,Dr. med. Daniel Weiss,49.4777545,10.9886436
+doctors,Hausärtzliche Gemeinschaftspraxis O.Bujanowskaja & I. Babintschuk,49.4701024,11.107377
+doctors,Praxis am Keßlerplatz,49.4536343,11.0910141
+doctors,Dr. med. Christian Döbig,49.5860928,11.0044919
+doctors,CIP-Ambulanz Erlangen,49.5913543,11.0202314
+doctors,Dr. Hirsch & Dr. Geyer Gemeinschaftspraxis,49.4578239,11.0724892
+parcel_locker,DHL Packstation,49.4739642,11.0725377
+parcel_locker,DHL Packstation,49.5871557,10.9754482
+parcel_locker,DHL Packstation,49.4567713,10.9894578
+parcel_locker,DHL Packstation 141,49.5826762,10.9937922
+parcel_locker,Packstation 803,49.5928003,11.0236793
+parcel_locker,Packstation 108,49.4666629,11.0814926
+parcel_locker,DHL Packstation,49.4457646,11.0809982
+parcel_locker,Packstation 176,49.4541745,11.0886723
+parcel_locker,DHL Packstation,49.4734366,11.0857731
+parcel_locker,Packstation 126,49.4630665,11.0515584
+parcel_locker,DHL Packstation,49.4703322,10.9892347
+parcel_locker,Packstation 128,49.4659147,11.0761398
+parcel_locker,DHL Packstation,49.4299021,11.069914
+parcel_locker,Paketstation 129,49.4452225,11.0713474
+parcel_locker,Packstation 140,49.4679756,10.9954354
+parcel_locker,DHL Packstation,49.5936647,11.0189714
+parcel_locker,DHL Packstation,49.435319,11.0421092
+parcel_locker,DHL Packstation,49.481196,10.9557434
+parcel_locker,DHL Packstation,49.4812261,10.9557355
+parcel_locker,DHL Packstation,49.4868368,10.9958909
+parcel_locker,Packstation 138,49.4331545,11.0963585
+parcel_locker,Packstation 110,49.5756978,11.0016648
+parcel_locker,DHL Packstation,49.4295254,11.0168314
+parcel_locker,DHL Packstation,49.456063,11.1222063
+parcel_locker,DHL Packstation,49.4545157,11.0012401
+parcel_locker,5706007869,49.4487953,10.9511287
+parcel_locker,Packstation 151,49.4675009,11.0585935
+parcel_locker,Packstation 125,49.4546922,11.0521556
+parcel_locker,DHL Packstation,49.5890355,11.0341441
+parcel_locker,DHL Packstation,49.4739687,11.0649168
+parcel_locker,Packstation,49.4310464,10.9692654
+parcel_locker,Amazon Locker,49.5926113,11.014631
+parcel_locker,Amazon Locker,49.4653476,11.1224703
+parcel_locker,DHL Packstation,49.4752632,11.1054174
+parcel_locker,DHL Packstation,49.5882948,10.9769094
+parcel_locker,DHL Packstation,49.4929703,10.9402498
+parcel_locker,Amazon Hub,49.5456068,11.0296187
+parcel_locker,189,49.492801,10.9174011
+parcel_locker,Amazon Locker,49.4634461,11.0749204
+parcel_locker,Amazon Locker,49.469739,11.0672629
+parcel_locker,Packstation 140,49.5750356,11.0007573
+parcel_locker,Packstation 130,49.4703871,10.989158
+parcel_locker,Packstation 184,49.5935466,11.0264836
+parcel_locker,DHL Packstation 148,49.5785103,10.9874312
+parcel_locker,DHL Packstation,49.5847097,10.9956836
+parcel_locker,DHL Packstation,49.5696378,10.9917113
+parcel_locker,Packstation 170,49.4306036,10.9795813
+parcel_locker,DHL Packstation,49.4347887,10.9708369
+parcel_locker,DHL Packstation,49.4408034,10.9623432
+parcel_locker,DHL Packstation,49.5245764,10.9071233
+parcel_locker,DHL Packstation,49.4280661,11.0549813
+parcel_locker,DHL Packstation,49.4285925,11.05579
+parcel_locker,DHL Packstation,49.5833418,10.965623
+parcel_locker,DHL Packstation,49.4611719,10.985696
+parcel_locker,DHL Packstation,49.5123635,10.9827145
+parcel_locker,DHL Paketbox,49.4942421,10.9893016
+parcel_locker,Packstation 185,49.5533024,11.0226649
+parcel_locker,DHL Packstation,49.4319193,10.935915
+parcel_locker,Luus,49.4756873,11.1048155
+parcel_locker,DHL Packstation,49.473219,11.0768734
+parcel_locker,Packstation 155,49.4676213,10.995615
+parcel_locker,DHL Packstation,49.4461436,11.0819003
+parcel_locker,Packstation 137,49.4811706,11.0099929
+parcel_locker,Amazon Locker,49.4704947,11.0262905
+parcel_locker,Packstation 199,49.4683721,10.9990367
+parcel_locker,DHL Packstation,49.5874182,11.00445
+parcel_locker,Packstation 159,49.5818717,11.0047198
+parcel_locker,DHL Packstation,49.5874146,11.0044206
+parcel_locker,Packstation 103,49.4543233,11.0388724
+parcel_locker,Packstation 106,49.4595721,11.0228721
+parcel_locker,Packstation 199,49.4576693,11.0430986
+parcel_locker,DHL Packstation,49.4673738,11.1392584
+parcel_locker,DHL Packstation,49.4490301,11.0252437
+parcel_locker,DHL Packstation,49.4412169,11.0285025
+parcel_locker,DHL Packstation,49.5235077,11.0141133
+parcel_locker,DHL Packstation,49.4479103,11.0044141
+parcel_locker,DHL Packstation,49.4523505,11.1257487
+parcel_locker,DHL Packstation,49.4588088,11.0008017
+parcel_locker,DHL Packstation,49.4554621,11.0043055
+parcel_locker,Packstation 198,49.4753583,10.9901322
+parcel_locker,Packstation 102,49.5944606,11.0066133
+parcel_locker,DHL Packstation,49.4315252,11.0439065
+parcel_locker,Packstation 198,49.4376143,11.0873156
+parcel_locker,DHL Packstation,49.4215199,11.0149756
+parcel_locker,Amazon,49.4398358,11.0904666
+parcel_locker,Packstation 188,49.4569206,11.0877364
+parcel_locker,Packstation102,49.4581674,11.0591487
+parcel_locker,Packstation 206,49.4519595,11.07052
+parcel_locker,DHL Packstation,49.5866934,11.0133855
+parcel_locker,kahale,49.4291809,11.0686122
+parcel_locker,DHL Packstation,49.4935927,10.9931959
+parcel_locker,DHL Packstation,49.4847756,11.0006565
+parcel_locker,DHL Packstation,49.4521304,11.1113808
+parcel_locker,Amazon Locker,49.5246165,10.9076771
+parcel_locker,DHL Packstation,49.4459596,11.072712
+parcel_locker,DHL Packstation,49.4691514,11.1018473
+parcel_locker,DHL Deutsche Post AG,49.5155905,11.0305674
+parcel_locker,DHL Packstation,49.4364716,11.0507739
+parcel_locker,Packstation 177,49.4315592,11.0852555
+parcel_locker,Amazon Locker,49.4408303,11.1028826
+parcel_locker,Amazon Locker,49.4513614,11.0765704
+parcel_locker,Packstation,49.4197408,11.0369743
+parcel_locker,Packstation 201,49.4735495,10.9902802
+parcel_locker,Packstation 138,49.483671,10.9657388
+parcel_locker,Packstation 195,49.4388127,10.9451057
+parcel_locker,Amazon Locker,49.4698172,11.0684272
+parcel_locker,DHL Packstation,49.4526569,11.0224193
+parcel_locker,DHL Packstation,49.4851802,11.105659
+parcel_locker,DHL Paketbox,49.4609176,10.970292
+parcel_locker,13905918471,49.4647441,11.1176893
+parcel_locker,DeinFach 601,49.5718306,11.0019929
+parcel_locker,DeinFach 602,49.5557021,10.9953784
+parcel_locker,DeinFach 604,49.5445817,11.0287242
+parcel_locker,DHL Packstation,49.4948141,10.9764938
+parcel_locker,DHL Packstation,49.4526892,11.0145885
+parcel_locker,DHL Packstation,49.4640909,10.9880382
+parcel_locker,DeinFach,49.4291617,11.0684649
+parcel_locker,DHL Packstation,49.4473263,11.0659126
+parcel_locker,DeinFach,49.471301,11.0235708
+parcel_locker,DeinFach,49.435254,11.0918923
+parcel_locker,DeinFach,49.5761374,11.0295572
+parcel_locker,DHL Packstation,49.4456872,10.95105
+bar,Sieben,49.4579543,11.0567261
+bar,Blume von Hawaii,49.4555398,11.0737435
+bar,Mata Hari Bar,49.455017,11.0723419
+bar,Gelbes Haus,49.4587963,11.0645641
+bar,Original Bar,49.4488125,11.0773692
+bar,Blu Bowl,49.4451063,11.0714024
+bar,Cafe-Bar Ruine,49.4845557,10.9971108
+bar,New Force Discothek,49.5773318,10.9983655
+bar,Lambada,49.4481109,11.0698328
+bar,Bar59,49.4492798,11.0804442
+bar,Poupette,49.449396,11.0801723
+bar,macchiato Espressobar,49.4150387,11.0165691
+bar,Sputnik,49.4489569,11.0773416
+bar,Mitte,49.4489507,11.077423
+bar,Mono Bar,49.4486703,11.077436
+bar,Haltestelle Hering,49.4486707,11.0775565
+bar,N°14,49.4519568,11.0764083
+bar,Bliss,49.452014,11.0764313
+bar,Pigalle,49.4479707,11.0712734
+bar,Pintus,49.4492175,11.0690365
+bar,Water Pipe Cafe,49.4486354,11.0677801
+bar,dieroteBar,49.4520546,11.0816511
+bar,Pontiki,49.4528809,11.0523504
+bar,Kosovo Bar,49.4550304,11.0421972
+bar,Zoom,49.4603433,11.0995492
+bar,Pilsstube Bayreuther Hof,49.4728153,11.1029935
+bar,Die unauffindBAR,49.4525276,11.0739143
+bar,B-M-F Museum Bar,49.4574513,11.053903
+bar,Downtown,49.4570315,11.0765786
+bar,Saigon Bar,49.4560063,11.0738046
+bar,Eule,49.4553728,11.0792352
+bar,Das Willich,49.4488901,11.0545078
+bar,Pause,49.4445858,11.0687746
+bar,Unique,49.4425325,11.0761894
+bar,Bar Biene,49.4518973,11.0725219
+bar,Sportsbar 11,49.4440742,11.0889094
+bar,Black Horse,49.4363253,11.0921001
+bar,Japandi,49.430486,11.0810383
+bar,Cafe Campus,49.4516757,11.0833504
+bar,Vorraum,49.4488457,11.078691
+bar,AL LAYALI,49.4443731,11.0600873
+bar,Weinerei,49.4502368,11.0796385
+bar,Bar Millionär,49.4503076,11.0756448
+bar,Bar Europa,49.4559951,11.0829788
+bar,Plaza Café Bar,49.468026,10.9892675
+bar,HERRENGEDECK,49.4501507,11.0670575
+bar,Hinz x Kunz,49.4501754,11.0838217
+bar,Classic Bar,49.4287227,11.0680244
+bar,Starlight,49.4473538,11.0778704
+bar,Velvet,49.459196,11.062802
+bar,Club #Schimanski,49.4519014,11.0748895
+bar,Habana,49.4409999,11.0789055
+bar,bxs,49.447621,11.0780755
+bar,Tante Betty,49.4632916,11.071983
+bar,Society,49.4482651,11.0794202
+bar,kunstkeller o27,49.4712755,10.9857955
+bar,USG 6,49.456739,11.076296
+bar,Westbar,49.4573799,11.058278
+bar,LOFT,49.4499106,11.0501883
+bar,achtzehn97,49.445545,11.0609552
+bar,Z,49.4540757,11.0751772
+bar,orca.bar,49.4486809,11.0696331
+bar,Al Pacino,49.4514915,11.0546827
+bar,Negroni,49.4891464,10.921651
+bar,Brooklyn,49.449957,11.0561865
+bar,075 Weinbar & Handel,49.4555361,11.0739407
+bar,Sektor,49.4550844,11.0721368
+bar,Ali Baba,49.462326,11.084638
+bar,Artin,49.4461185,11.0639183
+bar,Schloss Eck,49.4620588,11.0682987
+bar,AUCH,49.4554752,11.0746184
+bar,Red Corner Bar,49.4488508,11.0747905
+bar,Eventhalle Fürth,49.4920939,10.9236693
+bar,Nachtcafe,49.4516914,11.0733849
+bar,Rizzo,49.4540601,11.0750703
+bar,Mezze,49.4550474,11.0748299
+bar,Gassenhauer,49.4487408,11.069307
+bar,The Old Shillelagh,49.4676986,11.029164
+bar,Cafe Bar Dominique,49.454957,11.0424386
+bar,Herz Dame,49.447788,11.0698785
+bar,Pontiki 2,49.4478679,11.0698802
+bar,Café Aprico,49.4506181,11.0559654
+bar,Bar Stazione,49.4470608,11.0854354
+bar,Piccolo,49.4440414,11.0840272
+bar,Deuerlein,49.4530508,11.0875922
+bar,Herrengarage,49.4489365,11.0830716
+bar,Vintage Bar,49.4554517,11.0736171
+bar,Schmelztiegel,49.4570672,11.0748147
+bar,Wein-Bumms,49.4479156,11.0808046
+bar,Streetart Cafe,49.455711,11.0815117
+bar,Atelier Bar,49.4478198,11.0825953
+bar,The Game,49.4600894,11.0608315
+bar,Café & Bar Shamrock,49.4799869,10.9955088
+bar,Sportbar Bärenschanze,49.4522045,11.0509801
+bar,Sport Cafe Arena,49.4532349,11.0493936
+bar,Starlight Karaoke,49.4495972,11.0751247
+bar,Cafe & Bar Central,49.4518964,11.0772674
+bar,Top Shisha,49.4569792,11.0089767
+bar,Sam's,49.5063668,10.8873144
+bar,Chiara,49.4523657,11.0750502
+bar,Maxi,49.4547585,11.0380645
+bar,Dosana Club,49.4603576,11.0821166
+bar,EULE Speakeasy Bar,49.4553632,11.0791381
+bar,Brasserie Nitz,49.4535095,11.075226
+bar,El Patrón,49.4442113,11.0889432
+bar,Music bar Don Matteo,49.4439775,11.0888206
+bar,Lange Kante 16,49.4552733,11.0727621
+bar,Vibe,49.441778,11.0912602
+bar,Chill Inn,49.4743338,10.9904242
+bar,Cloud One Bar,49.4468333,11.0831866
+bar,HARLEM,49.4479268,11.0792981
+bar,Zum Tellerrand,49.4607371,11.0318309
+bar,Pudelbar,49.4483315,11.0774056
+bar,La Spritzeria,49.4733096,10.9906252
+bar,Salopp,49.4613177,11.0890125
+bar,One Way,49.4433665,11.0780874
+bar,Caesar's,49.4767866,10.9900436
+bar,Hopes Sportgaststätte,49.4559162,11.0001066
+bar,Wild und Geflügel,49.4544244,11.0739913
+bar,Nelson's,49.4436794,11.0833496
+bar,Tiekings,49.4785428,10.9897248
+bar,KopfUndKragen,49.4713383,10.9858086
+bar,Wallenstein,49.4686405,10.9892765
+bar,SoHo Bar Fürth,49.4788121,10.9895231
